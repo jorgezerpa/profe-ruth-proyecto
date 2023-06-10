@@ -184,14 +184,18 @@ button{
     margin-top: 40px; /*JZ-> agregué espaciado*/
 }
 
-.icons img{
+
+.icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width:  40px;
-    margin: auto;
-    font-size: 1rem;
 }
+
+.icons img{
+    border-radius: 0;
+    width: 40px;
+}
+
 footer{
     background-color: #af599e;
     color: #fbfbfb;
