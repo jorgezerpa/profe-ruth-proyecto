@@ -7,8 +7,8 @@
     <title>Rut Ramírez Prada</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflame.com/ajax/libs/font-awesome/5.15.3/css/all.mjm.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
@@ -26,10 +26,9 @@
     </header>
     <main>
         <section>
-            <img src="img/Rut.jpg" alt="Rut" style="border-radius: 65%
-            ;">
+            <img src="img/Rut.jpg" alt="Rut" >
         </section>
-        <h1 id=inicio>Hola, soy Rut</h1>
+        <h1 id="inicio">Hola, soy Rut</h1>
         <section>
             <h2>Sobre mí</h2>
             <p>Escritora independiente y profesora de Español con diez años de experiencia en el área.
@@ -67,15 +66,18 @@
             <h2 id="contact">Contacto</h2>
             <form action="" method="post">
             <div>
-                <label for="name">Nombre</label>
-                <input type="text" id="nombre" name="nombre"
-                > 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email"
-                >
-                <label for="message">Cuéntame</label>
-                <textarea type="mensaje" id="message" name="message"></textarea
-                >
+                <div class="form__item-input">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="nombre" name="nombre"> 
+                </div>
+                <div class="form__item-input">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form__item-textarea">
+                    <label for="message">Cuéntame</label>
+                    <textarea type="mensaje" id="message" name="message"></textarea>
+                </div>
             </div>
                 <button type="submit">Enviar</button>
             </form>

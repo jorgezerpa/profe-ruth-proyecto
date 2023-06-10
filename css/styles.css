@@ -33,6 +33,7 @@ a {
 */
 main {
     max-width: 1200px;
+    width: 90%; /*JZ-> aqui para que, al ser la pantallas menor a 1200px, mantenga cierto padding */
     margin: auto;
     text-align: center;
 }
@@ -57,11 +58,35 @@ nav li{
     margin-right: 15px;
 }
 
+
+
+
+/* --------------------------
+JZ->
+El codigo que tenías no te centra la imagen porque, estas dandole el display flex
+a la imagen, y tienes que darselo al container de la imagen, para esto 
+tendrias que envolver la imagen en un div, y a ese div padre si le das
+el display flex. 
+
 img{
     max-width: 400px;
     display: flex;
     align-content: center;
 }
+
+Pero, abajo lo hice de una manera en la que no necesitas display flex y asi no hay que cambiar el html
+------------------------- */
+img{
+    max-width: 400px; 
+    width: 90vw; /*JZ-> Asi la haces más responsive, cuando la pantalla sea menor a 400px, la imagen se ajustara al 90% del view width (ancho de pantalla)*/
+    margin: 0 auto; /*JZ-> Asi la puedes centrar sin necesidad de display flex*/
+    border-radius: 50%; /*JZ-> Quité esto del html y lo puse aca. Si quieres que la imagen sea redonda, cualquier valor igual o mayor a 50% la hará redonda -> es lo mismo visualmente 50%, 65% ó cualquier otro valor*/
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+
+
 
 h1{
     font-size: 36px;
@@ -72,6 +97,7 @@ h1{
 h2{
     font-size: 28px;
     text-align: center;
+    margin-top: 50px; /*JZ-> para generar mas espacio sobre los titulos y dar mejor jerarquia visual*/
 }
 
 p{
@@ -92,16 +118,47 @@ h4{
     border-radius: 10px;
     text-align: center;
     font-size: 20px;
-    margin-top: 10px;
+    margin-top: 50px; /*JZ-> aumenté el margin top */
+    margin-bottom: 50px; /*JZ-> agregué margin de abajo */
     cursor: pointer;
 }
-#contacto{
+
+
+
+
+/* ------------------------------------------
+JZ-> AQUI SI HICE VARIOS CAMBIOS  CON LOS ESTILOS DEL FORMULARIO Y ALGUNOS CAMBIOS EN EL HTML.
+Más precisament, en el html: 
+1. Envolví los label y divs en un div para cada pareja, y le asigné la clase .for__item-input y .form__item-textarea respectivamente
+------------------------------------------ */
+#contacto h2 {
+    margin-bottom: 30px; /*JZ->damos espacio al bottom del titulo "contacto"*/
+}
+
+#contacto div{ /*Aqui es donde tenias que agregar el flex, al container de los inputs*/
     display: flex;
     align-content: center;
     text-align: center;
+    gap: 40px; /*JZ->espaciado entre elementos*/
+    flex-wrap: wrap; /*para que el form__item pase hacia abajo si ya no tiene espacio*/
 }
+
 /*No entiendo qué hice para que desaparecieran las casillas 
-del formulario de contacto. Solo necesitaba alinearlas correctamente*/
+del formulario de contacto. Solo necesitaba alinearlas correctamente
+
+JZ->   Habías hecho algo como esto -> border: 1px; -> no colocaste ni el tipo ni el color
+SIEMPRE tienes que especificar: grosor, tipo y color, por ejemplo -> border: 1px solid red;
+*/
+
+/*JZ-> LAs clases las asigné para dar estilos más facilmente*/
+.form__item-input {
+    width: 40%; /*JZ-> Los inputs toman el 50% del width para que asi esten los dos en la misma línea (pusé 40% poorque el gap tambien cuenta como espacio, si ponía 50% iban a saltar de linea asi que le reste un 10% para asegurarnos de que no pase eso)*/
+}
+.form__item-textarea {
+    width: 100%; /*JZ-> El text area si toma el 100% para que siempre ocupe una linea el solito*/
+}
+
+
 
 label{
     display:block;
@@ -110,10 +167,12 @@ label{
 
 input,
 textarea{
+    width: 100%; /*JZ-> que ocupen el maximo espacio posible (dentro de su div padre, el que te dije que cree para envolverlos)*/
     padding: 8px;
-    border: 1px;
     margin-top: 5px;
-    border-bottom: #180d16;
+    /*JZ->Eliminamos las lineas, y solo agregamos al bottom */
+    border: none; 
+    border-bottom: 1px solid #180d16;
 }
 
 button{
@@ -122,6 +181,7 @@ button{
     color: #fbfbfb;
     padding: 10px;
     font-size: 20px;
+    margin-top: 40px; /*JZ-> agregué espaciado*/
 }
 
 .icons img{
@@ -157,12 +217,22 @@ footer{
 *    un trabajo manual, hacer una artesanía, tocar un instrumento musical... la práctica es todo!
 */
 
-@media (max-weidth:770px){
+
+/* @media (max-weidth:770px){ ---> tenias un error en la palabra width */
+@media (max-width:770px){
     header{
         flex-direction: column;
-        text-align: cengter;
+        text-align: center;
+    }
+    .form__item-input {
+        width: 100%; /*JZ-> aquí si le damos el width a full a los inputs, para que queden una abajo del otro*/
     }
 }
+
+    /*JZ-> Esto no se que hace pero hay lo deje :v 
+    principio de codigo numero 2 -> "if its not broken not solve it" ajajajajaja
+    pero si ves que lo puedes eliminar sin problema o descubres que hace pues lo modificas    
+    */
     sections{
         min-height: 100vh;
     }
